@@ -22,7 +22,7 @@ class ColorDiffSpec extends WordSpec with Matchers {
       s"""1c1
          |$RED< changeme$RESET
          |___
-         |$GREEN> CHANGEME$RESET""".stripMargin
+         |$GREEN> CHANGED$RESET""".stripMargin
   }
 
   "complex diff" in {
