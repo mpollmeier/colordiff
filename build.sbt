@@ -13,6 +13,8 @@ publishTo := { // format: off
   if (isSnapshot.value) Some("snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
   else Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
 } 
+licenses +=("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
+homepage := Some(url("https://github.com/mpollmeier/colordiff"))
 publishMavenStyle := true
 publishArtifact in Test := false
 pomIncludeRepository := { _ => false }
@@ -32,7 +34,6 @@ pomExtra :=
 
 import ReleaseTransformations._
 releaseCrossBuild := true
-releasePublishArtifactsAction := PgpKeys.publishSigned.value
 releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
