@@ -9,13 +9,8 @@ libraryDependencies ++= Seq(
 scalafmtOnCompile in ThisBuild := true
 
 releaseCrossBuild := true
-//format off
-publishTo := {
-  if (isSnapshot.value)
-    Some(
-      "snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
-  else
-    Some(
-      "releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
-}
-//format on
+releasePublishArtifactsAction := PgpKeys.publishSigned.value
+publishTo := { // format: off
+  if (isSnapshot.value) Some("snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
+  else Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
+} // format: on
