@@ -18,7 +18,7 @@ class ColorDiffSpec extends WordSpec with Matchers {
   }
 
   "change" in {
-    ColorDiff(List("changeme"), List("CHANGEME")) shouldBe
+    ColorDiff(List("changeme"), List("CHANGED")) shouldBe
       s"""1c1
          |$RED< changeme$RESET
          |___
