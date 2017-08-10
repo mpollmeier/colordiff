@@ -1,7 +1,7 @@
 package colordiff
 
-import io.AnsiColor._
 import org.scalatest._
+import scala.Console.{RED, GREEN, RESET}
 import scala.io.Source
 
 class ColorDiffSpec extends WordSpec with Matchers {

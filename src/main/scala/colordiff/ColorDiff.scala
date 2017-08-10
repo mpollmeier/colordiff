@@ -1,7 +1,7 @@
 package colordiff
 
 import scala.collection.JavaConverters._
-import io.AnsiColor._
+import scala.Console.{RED, GREEN, RESET}
 import difflib.{Delta, DiffUtils}
 
 object ColorDiff {
