@@ -38,8 +38,8 @@ class ColorDiffSpec extends WordSpec with Matchers {
        |___
        |$GREEN> this line will be CHANGED$RESET
        |5a
-       |$GREEN> here is another line
-       |> and one more$RESET""".stripMargin
+       |$GREEN> here is another line$RESET
+       |$GREEN> and one more$RESET""".stripMargin
 
     //output of unix colordiff
     // 1d0

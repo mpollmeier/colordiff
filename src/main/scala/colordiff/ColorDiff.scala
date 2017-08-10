@@ -13,22 +13,26 @@ object ColorDiff {
       .asScala
       .map { delta =>
         def original =
-          delta.getOriginal.getLines.asScala.map("< " + _).mkString("\n")
+          delta.getOriginal.getLines.asScala
+            .map(line => s"$RED< $line$RESET")
+            .mkString("\n")
         def revised =
-          delta.getRevised.getLines.asScala.map("> " + _).mkString("\n")
+          delta.getRevised.getLines.asScala
+            .map(line => s"$GREEN> $line$RESET")
+            .mkString("\n")
 
         delta.getType match {
           case Delta.TYPE.DELETE =>
             s"""${delta.getOriginal.getPosition + 1}d${delta.getRevised.getPosition}
-               |$RED$original$RESET""".stripMargin
+               |$original""".stripMargin
           case Delta.TYPE.CHANGE =>
             s"""${delta.getOriginal.getPosition + 1}c${delta.getRevised.getPosition + 1}
-               |$RED$original$RESET
+               |$original
                |___
-               |$GREEN$revised$RESET""".stripMargin
+               |$revised""".stripMargin
           case Delta.TYPE.INSERT =>
             s"""${delta.getOriginal.getPosition}a
-               |$GREEN$revised$RESET""".stripMargin
+               |$revised""".stripMargin
         }
       }
       .mkString("\n")
