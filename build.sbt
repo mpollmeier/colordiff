@@ -1,50 +1,22 @@
 name := "colordiff"
 organization := "com.michaelpollmeier"
-scalaVersion := "2.12.3"
-crossScalaVersions := Seq("2.10.6", "2.11.11")
+scalaVersion := "2.13.1"
+crossScalaVersions := Seq("2.10.6", "2.11.12", "2.12.8", "2.13.1")
 libraryDependencies ++= Seq(
   "com.googlecode.java-diff-utils" % "diffutils" % "1.3.0",
-  "org.scalatest" %% "scalatest" % "3.0.3" % Test
+  "org.scalatest" %% "scalatest" % "3.0.8" % Test
 )
+enablePlugins(GitVersioning)
 
-scalafmtOnCompile in ThisBuild := true
-
-publishTo := { // format: off
-  if (isSnapshot.value) Some("snapshots" at "https://oss.sonatype.org/content/repositories/snapshots")
-  else Some("releases" at "https://oss.sonatype.org/service/local/staging/deploy/maven2")
-} 
-licenses +=("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
+scmInfo := Some(
+  ScmInfo(url("https://github.com/mpollmeier/colordiff"),
+          "scm:git@github.com:mpollmeier/colordiff.git"))
+developers := List(
+  Developer("mpollmeier",
+            "Michael Pollmeier",
+            "michael@michaelpollmeier.com",
+            url("https://michaelpollmeier.com")))
 homepage := Some(url("https://github.com/mpollmeier/colordiff"))
-publishMavenStyle := true
-publishArtifact in Test := false
-pomIncludeRepository := { _ => false }
-pomExtra :=
-  <scm>
-    <url>git@github.com:mpollmeier/colordiff.git</url>
-    <connection>scm:git:git@github.com:mpollmeier/colordiff.git</connection>
-  </scm>
-    <developers>
-      <developer>
-        <id>mpollmeier</id>
-        <name>Michael Pollmeier</name>
-        <url>http://www.michaelpollmeier.com</url>
-      </developer>
-    </developers>
-// format: on
-
-import ReleaseTransformations._
-releaseCrossBuild := true
-releaseProcess := Seq[ReleaseStep](
-  checkSnapshotDependencies,
-  inquireVersions,
-  runClean,
-  runTest,
-  setReleaseVersion,
-  commitReleaseVersion,
-  tagRelease,
-  ReleaseStep(action = Command.process("publishSigned", _)),
-  setNextVersion,
-  commitNextVersion,
-  ReleaseStep(action = Command.process("sonatypeReleaseAll", _)),
-  pushChanges
-)
+licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
+publishTo := sonatypePublishToBundle.value
+Global/useGpgPinentry := true
