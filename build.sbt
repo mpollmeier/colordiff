@@ -1,7 +1,7 @@
 name := "colordiff"
 organization := "com.michaelpollmeier"
 scalaVersion := "2.13.1"
-crossScalaVersions := Seq("2.10.6", "2.11.12", "2.12.8", "2.13.1")
+crossScalaVersions := Seq("2.11.12", "2.12.8", "2.13.1")
 libraryDependencies ++= Seq(
   "com.googlecode.java-diff-utils" % "diffutils" % "1.3.0",
   "org.scalatest" %% "scalatest" % "3.0.8" % Test
