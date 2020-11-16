@@ -19,4 +19,3 @@ developers := List(
 homepage := Some(url("https://github.com/mpollmeier/colordiff"))
 licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
 publishTo := sonatypePublishToBundle.value
-Global/useGpgPinentry := true

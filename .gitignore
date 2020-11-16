@@ -1,2 +1,4 @@
 target
 private-key.pem
+/.bsp
+/gnupg-*
