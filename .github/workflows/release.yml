@@ -5,13 +5,13 @@ on:
     tags: ["*"]
 jobs:
   release:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - uses: olafurpg/setup-scala@v10
-      - uses: olafurpg/setup-gpg@v3
+      - run: apt update && apt install -y gnupg
       - run: gpg --list-keys
       - run: sbt test ciReleaseTagNextVersion ciReleaseSonatype
         env:
