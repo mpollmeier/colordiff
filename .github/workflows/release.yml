@@ -11,7 +11,7 @@ jobs:
         with:
           fetch-depth: 0
       - uses: olafurpg/setup-scala@v10
-      - run: apt update && apt install -y gnupg
+      - run: sudo apt update && sudo apt install -y gnupg
       - run: gpg --list-keys
       - run: sbt test ciReleaseTagNextVersion ciReleaseSonatype
         env:
