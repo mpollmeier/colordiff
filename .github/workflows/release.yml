@@ -15,7 +15,7 @@ jobs:
       - run: echo $PGP_SECRET | base64 --decode | gpg --batch --import
         env:
           PGP_SECRET: ${{ secrets.PGP_SECRET }}
-      - run: gpg --list-keys
+      - run: gpg --list-secret-keys
       - run: sbt test ciReleaseTagNextVersion ciReleaseSonatype
         env:
           PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
