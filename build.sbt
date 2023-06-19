@@ -1,10 +1,10 @@
 name := "colordiff"
 organization := "com.michaelpollmeier"
-scalaVersion := "2.13.3"
-crossScalaVersions := Seq(scalaVersion.value, "2.12.12")
+scalaVersion := "3.3.0"
+crossScalaVersions := Seq(scalaVersion.value, "2.13.11", "2.12.18")
 libraryDependencies ++= Seq(
   "com.googlecode.java-diff-utils" % "diffutils" % "1.3.0",
-  "org.scalatest" %% "scalatest" % "3.0.8" % Test
+  "org.scalatest" %% "scalatest" % "3.2.16" % Test
 )
 enablePlugins(GitVersioning)
 
