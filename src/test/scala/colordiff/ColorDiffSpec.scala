@@ -1,10 +1,11 @@
 package colordiff
 
-import org.scalatest._
 import scala.Console.{RED, GREEN, RESET}
 import scala.io.Source
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.wordspec.AnyWordSpec
 
-class ColorDiffSpec extends WordSpec with Matchers {
+class ColorDiffSpec extends AnyWordSpec with Matchers {
   "add" in {
     ColorDiff(List(), List("added")) shouldBe
       s"""0a
